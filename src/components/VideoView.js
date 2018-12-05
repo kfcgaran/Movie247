@@ -16,7 +16,7 @@ import { EatBeanLoader, TextLoader } from 'react-native-indicator';
 
 import Entypo from 'react-native-vector-icons/Entypo'
 import Icons from 'react-native-vector-icons/MaterialIcons'
-console.ignoredYellowBox = ['Warning:']
+console.disableYellowBox = true;
 class VideoView extends Component {
 
     constructor(props) {

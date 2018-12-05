@@ -3,7 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
-    ActivityIndicator
+    ActivityIndicator,
+    StatusBar
 } from "react-native";
 
 import { fetchData } from '../action/index'
@@ -89,6 +90,9 @@ class Splash extends Component {
         const { isFetching } = this.props.data
         return (
             <View style={{ flex: 1, backgroundColor: 'black' }}>
+                <StatusBar
+                    backgroundColor="black"
+                />
                 {isFetching ? this.renderActivityIndicator() : this.renderList()}
             </View>
         )

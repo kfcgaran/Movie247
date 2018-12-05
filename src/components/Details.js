@@ -11,7 +11,7 @@ import {
     ImageBackground,
     Text,
     ActivityIndicator,
-    TouchableOpacity
+    TouchableOpacity,
 } from "react-native";
 
 import AntDesign from 'react-native-vector-icons/AntDesign'
@@ -24,7 +24,7 @@ import DialogInput from 'react-native-dialog-input';
 import { FlatList } from "react-native-gesture-handler";
 import Orientation from 'react-native-orientation'
 import Common from '../common'
-import { NavigationActions , StackActions} from 'react-navigation'
+import { NavigationActions } from 'react-navigation'
 
 const { width, height } = Dimensions.get('window');
 console.ignoredYellowBox = ['Warning:']
@@ -55,6 +55,7 @@ class Details extends Component {
         const { params } = this.props.navigation.state
         const { item } = params
         this.getDetailMoviesFromApi(item.Link)
+
     }
 
     getDetailMoviesFromApi(url) {
@@ -113,7 +114,7 @@ class Details extends Component {
             index: 1,
             actions: [
                 NavigationActions.navigate({ routeName: 'Home' }),
-                NavigationActions.navigate({ routeName: 'Details', params: {item}}),               
+                NavigationActions.navigate({ routeName: 'Details', params: { item } }),
             ],
         });
         return (
@@ -227,6 +228,7 @@ class Details extends Component {
                                         numColumns={5}
                                         columnWrapperStyle={{ marginTop: 5, maginLeft: 5, marginRight: 5 }}
                                         data={episodes}
+                                        keyExtractor = {item => item.Tap}                                                                 
                                         renderItem={({ item }) => this._renderEpisodes(item)}
                                     />
                                 </View>

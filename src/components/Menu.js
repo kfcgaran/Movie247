@@ -174,7 +174,6 @@ const styles = StyleSheet.create({
         paddingRight: 20
     },
     iconWithText: {
-        color: 'white',
         marginRight: 20,
         paddingLeft: 20,
         width: 20,

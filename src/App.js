@@ -12,11 +12,10 @@ import GridListMovies from './components/GridListMovies'
 import Orientation from 'react-native-orientation'
 import SideMenu from 'react-native-side-menu';
 import { AfterInteractions } from 'react-native-interactions';
-
+//console.disableYellowBox = true;
 class App extends Component {
   constructor(props) {
     super(props)
-    this.props.navigation.state.key = 'homeapp'
     this.state = {
       isOpen: false,
       itemSelected: 'Trang Chủ'

@@ -61,7 +61,7 @@ class List extends Component {
                         ItemSeparatorComponent={() => <View style={{ width: 7 }} />}
                         data={arrHotMovies}
                         renderItem={({ item}) => this._renderItem(item)}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
                 <View>
@@ -71,7 +71,7 @@ class List extends Component {
                         ItemSeparatorComponent={() => <View style={{ width: 7 }} />}
                         data={arrMultipleUpdateMovies}
                         renderItem={({ item}) => this._renderItem(item)}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
                 <View>
@@ -81,7 +81,7 @@ class List extends Component {
                         ItemSeparatorComponent={() => <View style={{ width: 7 }} />}
                         data={arrSingleUpdateMovies}
                         renderItem={({ item}) => this._renderItem(item)}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
                 <View>
@@ -91,7 +91,7 @@ class List extends Component {
                         ItemSeparatorComponent={() => <View style={{ width: 7 }} />}
                         data={arrCartoonMovies}
                         renderItem={({ item}) => this._renderItem(item)}
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
             </View>
