@@ -24,7 +24,7 @@ const Header = props => {
             </TouchableOpacity>
             {
                 props.itemSelectedValue == 'Trang Chủ' ?
-                    <Image style={styles.logo} source={require('../image/Netflix-logo.png')} />
+                    <Image style={styles.logo} source={require('../image/logo.png')} />
                     :
                     <Text style={{color: 'white', fontSize: 18}}>{props.itemSelectedValue}</Text>
             }
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
         paddingTop: 5,
     },
     logo: {
-        width: 120,
-        height: 40
+        width: 140,
+        height: 35
     }
 })
 

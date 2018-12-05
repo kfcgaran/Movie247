@@ -8,7 +8,8 @@ import {
     TouchableWithoutFeedback,
     InteractionManager,
     ActivityIndicator,
-    Dimensions
+    Dimensions,
+    TouchableOpacity
 } from "react-native";
 
 import { connect } from 'react-redux'
@@ -148,21 +149,21 @@ class GridListMovies extends Component {
             {
                 paramsCategory.length ?
                 <View style={styles.containerHeader}>
-                    <TouchableWithoutFeedback onPress={() => goBack()}>
+                    <TouchableOpacity onPress={() => goBack()}>
                         <Entypo
                             name='chevron-thin-left'
                             color="white"
                             size={25}
                         />
-                    </TouchableWithoutFeedback>
+                    </TouchableOpacity>
                     <Text style={{color: 'white', fontSize: 18}}>{paramsCategory}</Text>
-                    <TouchableWithoutFeedback onPress={() => navigate('Search')}>
+                    <TouchableOpacity onPress={() => navigate('Search')}>
                     <Icon
                         name="search"
                         color="white"
                         size={25}
                     />
-                    </TouchableWithoutFeedback>
+                    </TouchableOpacity>
                 </View>
                 : null
             }

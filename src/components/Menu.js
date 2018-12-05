@@ -24,7 +24,7 @@ class Menu extends Component {
                     <View style={styles.avatarImage}>
                         <Image
                             style={styles.avatar}
-                            source={require('../image/Netflix-logo.png')}
+                            source={require('../image/logo.png')}
                         />
                     </View>
                 </View>
@@ -145,8 +145,8 @@ const styles = StyleSheet.create({
         paddingVertical: 20
     },
     avatar: {
-        width: width / 3,
-        height: 60,
+        width: 140,
+        height: 35,
         justifyContent: "center",
     },
     avatarImage: {
