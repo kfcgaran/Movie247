@@ -24,7 +24,7 @@ class Menu extends Component {
                     <View style={styles.avatarImage}>
                         <Image
                             style={styles.avatar}
-                            source={require('../image/logo.png')}
+                            source={require('../image/logo-menu.png')}
                         />
                     </View>
                 </View>

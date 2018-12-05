@@ -48,6 +48,34 @@ const listGenres = [
     {
         key: 10,
         name: 'TV Show'
+    },
+    {
+        key: 11,
+        name: 'Hình Sự - Chiến Tranh'
+    },
+    {
+        key: 12,
+        name: 'Tài Liệu - Khám Phá'
+    },
+    {
+        key: 13,
+        name: 'Văn Hóa - Tâm Linh'
+    },
+    {
+        key: 14,
+        name: 'Phim Thuyết Minh'
+    },
+    {
+        key: 15,
+        name: 'Phim Lồng Tiếng'
+    },
+    {
+        key: 16,
+        name: 'Trinh Thám'
+    },
+    {
+        key: 17,
+        name: 'Gia Đình - Học Đường'
     }
 ]
 
@@ -115,7 +143,7 @@ class Category extends Component {
                 <FlatList
                     data={"Thể Loại" == itemSelectedValue ? listGenres : listNation}
                     renderItem={({ item }) => this._renderItem(item)}
-                    KeyExtractor={item => item.key} >
+                    KeyExtractor={item => item.key}>
                 </FlatList>
             </View>
         );
@@ -126,22 +154,20 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#151515',
-        paddingTop: 5,
-        paddingBottom: 10
     },
     itemText: {
         fontSize: 18,
         color: 'white',
-        padding: 10
+        padding: 10,
+        paddingLeft: 20,
+        textAlign: 'left'
     },
     itemList: {
-        backgroundColor: '#151515',
         width: width,
         height: 50,
+        paddingBottom: 5,
         borderBottomWidth: 0.5,
-        borderBottomColor: '#424242',
-        alignItems: 'center',
-        paddingBottom: 5
+        borderBottomColor: '#424242'
     }
 });
 

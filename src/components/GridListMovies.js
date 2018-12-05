@@ -101,6 +101,27 @@ class GridListMovies extends Component {
         if (item == 'TV Show') {
             return 22
         }
+        if (item == 'Hình Sự - Chiến Tranh') {
+            return 29
+        }
+        if (item == 'Tài Liệu - Khám Phá') {
+            return 31
+        }
+        if (item == 'Văn Hóa - Tâm Linh') {
+            return 34
+        }
+        if (item == 'Phim Thuyết Minh') {
+            return 32
+        }
+        if (item == 'Phim Lồng Tiếng') {
+            return 30
+        }
+        if (item == 'Trinh Thám') {
+            return 33
+        }
+        if (item == 'Gia Đình - Học Đường') {
+            return 28
+        }
     }
 
     static navigationOptions = {
