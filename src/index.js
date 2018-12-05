@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { BackHandler, Alert, ToastAndroid } from 'react-native'
 import { Provider, connect } from 'react-redux'
 import { StackNavigator, NavigationActions } from 'react-navigation'
-
+import RNExitApp from 'react-native-exit-app';
 import Routes from './config/routes'
 
 import getStore from './store'
 
 const Navigator = StackNavigator(Routes, {
     headerMode: 'screen',
-    initialRouteName: 'Splash'
+    initialRouteName: 'Splash',
 })
 
 const navReducer = (state, action) => {
@@ -48,15 +48,14 @@ class App extends Component {
 
     clickAgainToExit(){
         if (this.state.doubleBackToExitPressedOnce) {
-            BackHandler.exitApp();
+            RNExitApp.exitApp();
         }
         ToastAndroid.show('Ấn lần nữa để thoát', ToastAndroid.SHORT);
         this.setState({ doubleBackToExitPressedOnce: true });
         setTimeout(() => {
             this.setState({ doubleBackToExitPressedOnce: false });
-        }, 500);       
+        }, 1000);       
     }
-
 
     render() {
         const navigation = {

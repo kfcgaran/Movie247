@@ -4,7 +4,7 @@ import {
     Text,
     StyleSheet,
     ActivityIndicator,
-    StatusBar
+    StatusBar,
 } from "react-native";
 
 import { fetchData } from '../action/index'

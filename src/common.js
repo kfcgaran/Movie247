@@ -60,11 +60,12 @@ export default class Common extends Component {
             "content": content,
             "imageContent": imageContent,
             "episodes": episodes,
-            "nominatedMovie" : nominatedMovie
+            "nominatedMovie": nominatedMovie
         }
         arrDetails.push(myobj);
         return arrDetails;
     }
+
 
 }
 

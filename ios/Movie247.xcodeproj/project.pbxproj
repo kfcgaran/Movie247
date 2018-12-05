@@ -61,6 +61,7 @@
 		2C30E513497A4258866D3803 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E534FD953E4569968816B3 /* libBVLinearGradient.a */; };
 		13F44BCD102D4B0FAA3B9062 /* libRCTKSYVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C094B4DDEB64D508B8C7EA6 /* libRCTKSYVideo.a */; };
 		659FC617A7D149E09D68042F /* libRNJwPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BBF5A7FFEB140499E896E89 /* libRNJwPlayer.a */; };
+		4201A6230D8342B1BB8103AF /* libRNExitApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F67D3CBC124A32B3226BE7 /* libRNExitApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -398,6 +399,8 @@
 		8C094B4DDEB64D508B8C7EA6 /* libRCTKSYVideo.a */ = {isa = PBXFileReference; name = "libRCTKSYVideo.a"; path = "libRCTKSYVideo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		DFB07EBEB4F8406380AA7BC5 /* RNJwPlayer.xcodeproj */ = {isa = PBXFileReference; name = "RNJwPlayer.xcodeproj"; path = "../node_modules/react-native-jwplayer/ios/RNJwPlayer.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		1BBF5A7FFEB140499E896E89 /* libRNJwPlayer.a */ = {isa = PBXFileReference; name = "libRNJwPlayer.a"; path = "libRNJwPlayer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		06107FF229BA48649C2ED358 /* RNExitApp.xcodeproj */ = {isa = PBXFileReference; name = "RNExitApp.xcodeproj"; path = "../node_modules/react-native-exit-app/ios/RNExitApp.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		98F67D3CBC124A32B3226BE7 /* libRNExitApp.a */ = {isa = PBXFileReference; name = "libRNExitApp.a"; path = "libRNExitApp.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -433,6 +436,7 @@
 				2C30E513497A4258866D3803 /* libBVLinearGradient.a in Frameworks */,
 				13F44BCD102D4B0FAA3B9062 /* libRCTKSYVideo.a in Frameworks */,
 				659FC617A7D149E09D68042F /* libRNJwPlayer.a in Frameworks */,
+				4201A6230D8342B1BB8103AF /* libRNExitApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +632,7 @@
 				44A8FFC00F8344E78EAA64F4 /* BVLinearGradient.xcodeproj */,
 				F3E5A22699534D03980DA6E3 /* RCTKSYVideo.xcodeproj */,
 				DFB07EBEB4F8406380AA7BC5 /* RNJwPlayer.xcodeproj */,
+				06107FF229BA48649C2ED358 /* RNExitApp.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1303,6 +1308,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1335,6 +1341,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Movie247.app/Movie247";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1452,6 +1459,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1492,6 +1500,7 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1549,6 +1558,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1588,6 +1598,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
