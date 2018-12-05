@@ -21,7 +21,6 @@ class ListMoviesHome extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            arrBanner: [],
             arrHotMovies: [],
             arrMultipleUpdateMovies: [],
             arrSingleUpdateMovies: [],
@@ -47,7 +46,6 @@ class ListMoviesHome extends Component {
 
     render() {
         const params = this.props.data.data
-        const arrBanner = Common.getItemMovies(params[23])
         const arrHotMovies = Common.getItemMovies(params[26])
         const arrMultipleUpdateMovies = Common.getItemMovies(params[24])
         const arrSingleUpdateMovies = Common.getItemMovies(params[27])

@@ -39,22 +39,18 @@ class App extends Component {
     onBackPress() {
         const { dispatch, nav } = this.props;
         if (nav.index < 2) {
-            this.clickAgainToExit()
+            if (this.state.doubleBackToExitPressedOnce) {
+                RNExitApp.exitApp();
+            }
+            ToastAndroid.show('Ấn lần nữa để thoát', ToastAndroid.SHORT);
+            this.setState({ doubleBackToExitPressedOnce: true });
+            setTimeout(() => {
+                this.setState({ doubleBackToExitPressedOnce: false });
+            }, 1000);       
             return true;
         }
         dispatch(NavigationActions.back());
         return true;
-    }
-
-    clickAgainToExit(){
-        if (this.state.doubleBackToExitPressedOnce) {
-            RNExitApp.exitApp();
-        }
-        ToastAndroid.show('Ấn lần nữa để thoát', ToastAndroid.SHORT);
-        this.setState({ doubleBackToExitPressedOnce: true });
-        setTimeout(() => {
-            this.setState({ doubleBackToExitPressedOnce: false });
-        }, 1000);       
     }
 
     render() {

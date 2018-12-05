@@ -55,7 +55,9 @@ class App extends Component {
     if (this.state.itemSelected == 'Trang Chủ') {
       return (
         <ScrollView style={{ flex: 1 }}>
-          <Slide />
+          <Slide 
+            navigation={this.props.navigation}
+          />
           <ListMoviesHome
             navigation={this.props.navigation}
           />

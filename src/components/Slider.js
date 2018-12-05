@@ -5,16 +5,26 @@ import {
     Image,
     Dimensions,
     StyleSheet,
+    TouchableWithoutFeedback
 } from "react-native";
 
 import Swiper from 'react-native-swiper'
-
+import { connect } from 'react-redux'
+import Common from '../common'
 const { width, height } = Dimensions.get('window');
 
-const Slider = props => (<View style={styles.container}>
-    <Image style={styles.image} source={props.uri} />
-</View>
+
+const Slider = props => (<TouchableWithoutFeedback style={styles.container} onPress={() => props.navigate('Details', getObjMovie(props.item))}>
+    <Image style={styles.image} source={{uri: props.uri}} />
+</TouchableWithoutFeedback>
 )
+
+function getObjMovie(obj) {
+    myobj = {
+        item : obj
+    }
+    return myobj
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -36,26 +46,28 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
 })
-
-export default class extends Component {
+class Slide extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
-            imagesSlider: [
-                require('../image/1.jpg'),
-                require('../image/2.png'),
-                require('../image/3.jpg'),
-                require('../image/4.jpg'),
-                require('../image/5.png'),
-                require('../image/6.jpg'),
-                require('../image/7.jpg'),
-                require('../image/8.jpg')
+            arrBanner: [
+                // require('../image/1.jpg'),
+                // require('../image/2.png'),
+                // require('../image/3.jpg'),
+                // require('../image/4.jpg'),
+                // require('../image/5.png'),
+                // require('../image/6.jpg'),
+                // require('../image/7.jpg'),
+                // require('../image/8.jpg')
             ]
         }
+        
     }
 
     render() {
+        const params = this.props.data.data
+        const arrBanner = Common.getItemMovies(params[23])
+        const {navigate} = this.props.navigation
         return (
             <View style={{ flex: 0.6 }}>
                 <Swiper
@@ -67,9 +79,11 @@ export default class extends Component {
                     height={240}
                 >
                     {
-                        this.state.imagesSlider.map((item, i) => <Slider
-                            uri={item}
+                        arrBanner.map((item, i) => <Slider
+                            uri={item.image}
                             key={i}
+                            item = {item}
+                            navigate = {navigate}
                         />)
                     }
                 </Swiper>
@@ -78,3 +92,8 @@ export default class extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return { data: state.data }
+}
+
+export default connect(mapStateToProps)(Slide)

@@ -55,7 +55,6 @@ class Details extends Component {
         const { params } = this.props.navigation.state
         const { item } = params
         this.getDetailMoviesFromApi(item.Link)
-
     }
 
     getDetailMoviesFromApi(url) {
