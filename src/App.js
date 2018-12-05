@@ -16,6 +16,7 @@ import { AfterInteractions } from 'react-native-interactions';
 class App extends Component {
   constructor(props) {
     super(props)
+    this.props.navigation.state.key = 'homeapp'
     this.state = {
       isOpen: false,
       itemSelected: 'Trang Chủ'

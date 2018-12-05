@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Provider, connect } from 'react-redux'
-import { StackNavigator, addNavigationHelpers } from 'react-navigation'
+import { StackNavigator } from 'react-navigation'
 
 import Routes from './config/routes'
 
@@ -18,19 +18,20 @@ const navReducer = (state, action) => {
 
 class App extends Component {
     render(){
+        const navigation = {
+            dispatch: this.props.dispatch,
+            state: this.props.nav,
+        };
         return (
             <Navigator 
-                navigation={addNavigationHelpers({
-                    dispatch: this.props.dispatch,
-                    state: this.props.nav,
-                })}
+                navigation = {navigation}              
             />
         )
     }
 }
 
-const store = getStore(navReducer);
-const AppIndex = connect( state => ({ nav: state.nav }) )(App)
+const store = getStore(navReducer)
+const AppIndex = connect( state => ({ nav: state.nav }))(App)
 
 export default Index = () => {
     return (

@@ -57,7 +57,7 @@ export default class extends Component {
 
     render() {
         return (
-            <View style={{ flex: 0.8 }}>
+            <View style={{ flex: 0.6 }}>
                 <Swiper
                     autoplay
                     dot={<View style={styles.dot} />}

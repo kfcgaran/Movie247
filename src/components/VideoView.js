@@ -4,7 +4,8 @@ import {
     Text,
     StyleSheet,
     StatusBar,
-    TouchableOpacity
+    TouchableOpacity,
+    
 } from "react-native";
 
 import VideoPlayer from 'react-native-af-video-player';
@@ -121,15 +122,6 @@ class VideoView extends Component {
         if (!this.state.data.length && this.state.check == false) {
             return (
                 <View style={{ flex: 1, backgroundColor: 'black', paddingLeft: 10, paddingTop: 10 }}>
-                    {/* <TouchableOpacity
-                        onPress={this._back}
-                    >
-                        <Icons
-                            name='chevron-left'
-                            color='white'
-                            size={50}
-                        />
-                    </TouchableOpacity> */}
                     <View style={styles.loadingContainer}>
                         <EatBeanLoader
                             color='white'
@@ -152,6 +144,7 @@ class VideoView extends Component {
                     more={styles.backButton}
                     title={params.name + ' - Tập ' +params.item.Tap}
                     url={{ uri: Quality }}
+                    onEnd = {this._back}
                 />
             </View>
         );

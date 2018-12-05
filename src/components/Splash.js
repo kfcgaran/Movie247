@@ -45,7 +45,6 @@ const links = [
     'http://movie247.online/BiluTV/BiluTV/JsonPhim/TrangChu/phimlemoicapnhat.json' // [27]
 ]
 
-
 class Splash extends Component {
 
     constructor(props) {
