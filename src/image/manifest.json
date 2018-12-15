@@ -1,0 +1,33 @@
+{
+  "name": "Netflix Brand Site",
+  "short_name": "Netflix",
+  "manifest_version": 2,
+  "default_locale": "en",
+  "description": "",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e50914",
+  "orientation": "portrait-primary",
+  "icons": [{
+    "src": "static/assets/site-icons/icon128.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  }, {
+    "src": "static/assets/site-icons/icon192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }, {
+    "src": "static/assets/site-icons/icon256.png",
+    "sizes": "256x256",
+    "type": "image/png"
+  }, {
+    "src": "static/assets/site-icons/icon384.png",
+    "sizes": "384x384",
+    "type": "image/png"
+  }, {
+    "src": "static/assets/site-icons/icon512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

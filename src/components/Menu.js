@@ -41,7 +41,6 @@ class Menu extends Component {
                             <Text style={styles.text}>Trang Chủ</Text>
                         </View>
                     </TouchableHighlight>
-
                     <TouchableHighlight
                         style={"Phim Chiếu Rạp" == itemSelectedValue ? [styles.items, styles.itemSelected] : styles.noSelectedItems}
                         onPress={() => this.props.itemSelected("Phim Chiếu Rạp")}
@@ -54,8 +53,6 @@ class Menu extends Component {
                             <Text style={styles.text}>Phim Chiếu Rạp</Text>
                         </View>
                     </TouchableHighlight>
-
-
                     <TouchableHighlight
                         style={"Thể Loại" == itemSelectedValue ? [styles.items, styles.itemSelected] : styles.noSelectedItems}
                         onPress={() => this.props.itemSelected("Thể Loại")}
