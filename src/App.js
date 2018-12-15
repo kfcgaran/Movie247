@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, StatusBar, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, ScrollView, AsyncStorage } from 'react-native';
 
 import { connect } from 'react-redux'
 
-import List from './components/List';
+import ListMoviesHome from './components/ListMoviesHome';
 import Slide from './components/Slider';
 import Header from './components/Header';
 import Menu from './components/Menu';
@@ -12,20 +12,23 @@ import GridListMovies from './components/GridListMovies'
 import Orientation from 'react-native-orientation'
 import SideMenu from 'react-native-side-menu';
 import { AfterInteractions } from 'react-native-interactions';
+import { getData } from './action';
 
+//console.disableYellowBox = true;
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       isOpen: false,
-      itemSelected: 'Trang Chủ'
+      itemSelected: 'Trang Chủ',
+      arr: []
     }
     this.itemSelected = this.itemSelected.bind(this)
   }
 
   static navigationOptions = {
     headerVisible: false
-}
+  }
 
   toggle() {
     this.setState({
@@ -36,25 +39,26 @@ class App extends Component {
   itemSelected(item) {
     this.setState({
       itemSelected: item,
-      isOpen: false
+      isOpen: false,
     })
   }
-  
+
   componentWillMount() {
     Orientation.lockToPortrait()
-}
+  }
 
   updateMenu(isOpen) {
     this.setState({ isOpen })
   }
 
   _renderMenu() {
-    const {data} = this.props
     if (this.state.itemSelected == 'Trang Chủ') {
       return (
         <ScrollView style={{ flex: 1 }}>
-          <Slide />
-          <List
+          <Slide 
+            navigation={this.props.navigation}
+          />
+          <ListMoviesHome
             navigation={this.props.navigation}
           />
         </ScrollView>
@@ -121,7 +125,7 @@ class App extends Component {
       )
     }
   }
-  
+
   render() {
     return (
       <View style={[{ flex: 1 }, styles.container]}>
@@ -137,7 +141,6 @@ class App extends Component {
           isOpen={this.state.isOpen}
           onChange={(isOpen) => this.updateMenu(isOpen)}
           style={{ flex: 1 }}
-          
         >
           <View style={[{ flex: 1 }, styles.container]}>
             <Header
@@ -158,6 +161,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   }
 });
+
 
 //mapStateToProps
 const mapStateToProps = state => {

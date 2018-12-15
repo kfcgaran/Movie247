@@ -8,7 +8,8 @@ import {
     TouchableWithoutFeedback,
     InteractionManager,
     ActivityIndicator,
-    Dimensions
+    Dimensions,
+    TouchableOpacity
 } from "react-native";
 
 import { connect } from 'react-redux'
@@ -16,6 +17,7 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Common from '../common'
 import { AfterInteractions } from 'react-native-interactions';
+import {OptimizedFlatList} from 'react-native-optimized-flatlist'
 
 const ITEMS_PER_PAGE = 28;
 const {width,height} = Dimensions.get('window')
@@ -100,6 +102,27 @@ class GridListMovies extends Component {
         if (item == 'TV Show') {
             return 22
         }
+        if (item == 'Hình Sự - Chiến Tranh') {
+            return 29
+        }
+        if (item == 'Tài Liệu - Khám Phá') {
+            return 31
+        }
+        if (item == 'Văn Hóa - Tâm Linh') {
+            return 34
+        }
+        if (item == 'Phim Thuyết Minh') {
+            return 32
+        }
+        if (item == 'Phim Lồng Tiếng') {
+            return 30
+        }
+        if (item == 'Trinh Thám') {
+            return 33
+        }
+        if (item == 'Gia Đình - Học Đường') {
+            return 28
+        }
     }
 
     static navigationOptions = {
@@ -148,26 +171,26 @@ class GridListMovies extends Component {
             {
                 paramsCategory.length ?
                 <View style={styles.containerHeader}>
-                    <TouchableWithoutFeedback onPress={() => goBack()}>
+                    <TouchableOpacity onPress={() => goBack()}>
                         <Entypo
                             name='chevron-thin-left'
                             color="white"
                             size={25}
                         />
-                    </TouchableWithoutFeedback>
+                    </TouchableOpacity>
                     <Text style={{color: 'white', fontSize: 18}}>{paramsCategory}</Text>
-                    <TouchableWithoutFeedback onPress={() => navigate('Search')}>
+                    <TouchableOpacity onPress={() => navigate('Search')}>
                     <Icon
                         name="search"
                         color="white"
                         size={25}
                     />
-                    </TouchableWithoutFeedback>
+                    </TouchableOpacity>
                 </View>
                 : null
             }
                 <FlatList
-                    style={{ flex: 1, paddingLeft: 5, paddingRight: 5, paddingTop: 5}}
+                    style={{padding: 5}}
                     data={this.state.page == 1 ? initArr : continueArr}
                     numColumns={3}
                     keyExtractor={item => item.id}
@@ -200,7 +223,7 @@ const styles = StyleSheet.create({
         height: 160
     },
     itemContent: {
-        flex: 1,
+        flex: 1/3,
         flexDirection: 'column'
     },
     textItem: {

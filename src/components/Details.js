@@ -10,7 +10,8 @@ import {
     Share,
     ImageBackground,
     Text,
-    ActivityIndicator
+    ActivityIndicator,
+    TouchableOpacity,
 } from "react-native";
 
 import AntDesign from 'react-native-vector-icons/AntDesign'
@@ -23,6 +24,7 @@ import DialogInput from 'react-native-dialog-input';
 import { FlatList } from "react-native-gesture-handler";
 import Orientation from 'react-native-orientation'
 import Common from '../common'
+import { NavigationActions } from 'react-navigation'
 
 const { width, height } = Dimensions.get('window');
 console.ignoredYellowBox = ['Warning:']
@@ -89,7 +91,7 @@ class Details extends Component {
         const name = this.state.arrDetails[0].TenPhim
         return (
             <TouchableWithoutFeedback
-                onPress={() => navigate('VideoView', { item , name})}
+                onPress={() => navigate('VideoView', { item, name })}
                 underlayColor="#F2F5A9"
             >
                 <View style={styles.episodeContent}>
@@ -105,10 +107,17 @@ class Details extends Component {
         )
     }
 
-    _renderNominatedItem(item, id) {   
-        const { navigate,goBack } = this.props.navigation      
+    _renderNominatedItem(item, id) {
+        const { navigate, goBack } = this.props.navigation
+        const resetAction = NavigationActions.reset({
+            index: 1,
+            actions: [
+                NavigationActions.navigate({ routeName: 'Home' }),
+                NavigationActions.navigate({ routeName: 'Details', params: { item } }),
+            ],
+        });
         return (
-            <TouchableWithoutFeedback onPress={() => goBack()}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.dispatch(resetAction)}>
                 <View style={styles.itemContent}>
                     <Image style={styles.itemImage} source={{ uri: item.Anh }} />
                     <Text style={styles.textItem}>{item.TenPhim}</Text>
@@ -117,27 +126,27 @@ class Details extends Component {
         )
     }
 
-    render() {  
+    render() {
         const { navigate } = this.props.navigation
         const { goBack } = this.props.navigation
         if (!this.state.arrDetails.length) {
             return (
                 <View style={styles.container}>
                     <View style={styles.containerHeader}>
-                        <TouchableWithoutFeedback onPress={() => goBack()}>
+                        <TouchableOpacity onPress={() => goBack()}>
                             <Entypo
                                 name='chevron-thin-left'
                                 color="white"
                                 size={25}
                             />
-                        </TouchableWithoutFeedback>
-                        <TouchableWithoutFeedback onPress={() => this.onShare()}>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.onShare()}>
                             <EvilIcons
                                 name='share-apple'
                                 color="white"
                                 size={35}
                             />
-                        </TouchableWithoutFeedback>
+                        </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                         <ActivityIndicator
@@ -158,27 +167,27 @@ class Details extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.containerHeader}>
-                    <TouchableWithoutFeedback onPress={() => goBack()}>
+                    <TouchableOpacity onPress={() => goBack()}>
                         <Entypo
                             name='chevron-thin-left'
                             color="white"
                             size={25}
                         />
-                    </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={() => this.onShare()}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.onShare()}>
                         <EvilIcons
                             name='share-apple'
                             color="white"
                             size={35}
                         />
-                    </TouchableWithoutFeedback>
+                    </TouchableOpacity>
                 </View>
                 <ScrollView style={styles.scrollDetails}>
                     <ImageBackground
                         style={styles.thumbnail}
                         source={{ uri: imageContent }}
                     >
-                        <TouchableWithoutFeedback onPress={() => navigate('VideoView', { item,name })}>
+                        <TouchableWithoutFeedback onPress={() => navigate('VideoView', { item, name })}>
                             <View style={styles.buttonPlay}>
                                 <AntDesign
                                     style={styles.iconPlay}
@@ -216,8 +225,9 @@ class Details extends Component {
                                 <View style={styles.containerSeason}>
                                     <FlatList
                                         numColumns={5}
-                                        columnWrapperStyle={{ marginTop: 5, maginLeft: 5 , marginRight: 5}}
+                                        columnWrapperStyle={{ marginTop: 5, maginLeft: 5, marginRight: 5 }}
                                         data={episodes}
+                                        keyExtractor = {item => item.Tap}                                                                 
                                         renderItem={({ item }) => this._renderEpisodes(item)}
                                     />
                                 </View>
@@ -248,12 +258,12 @@ class Details extends Component {
                             <Text style={styles.infoTitle}>Lượt đánh giá :</Text>
                             <Text style={[{ width: width - (width / 5) }, styles.normalText]}>{reviews}</Text>
                         </View>
-                        <View style= {{flex:1 ,paddingTop: 10}}>
+                        <View style={{ flex: 1, paddingTop: 10 }}>
                             <Text style={[styles.title, styles.normalText]}>Phim liên quan</Text>
                             <FlatList
-                                style={{ flex: 1 , paddingTop: 10}}
+                                style={{ flex: 1, paddingTop: 10 }}
                                 data={nominatedMovie}
-                                numColumns={3}                                                               
+                                numColumns={3}
                                 keyExtractor={item => item.Key}
                                 renderItem={({ item }) => this._renderNominatedItem(item)}
                             />

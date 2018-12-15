@@ -3,7 +3,10 @@ import {
     View,
     Text,
     StyleSheet,
-    ActivityIndicator
+    ActivityIndicator,
+    StatusBar,
+    ImageBackground,
+    Dimensions
 } from "react-native";
 
 import { fetchData } from '../action/index'
@@ -42,9 +45,18 @@ const links = [
     'http://movie247.online/BiluTV/BiluTV/JsonPhim/TrangChu/phimbomoicapnhat.json', // [24]
     'http://movie247.online/BiluTV/BiluTV/JsonPhim/TrangChu/phimhoathinh.json', // [25]
     'http://movie247.online/BiluTV/BiluTV/JsonPhim/TrangChu/phimhot.json', // [26]
-    'http://movie247.online/BiluTV/BiluTV/JsonPhim/TrangChu/phimlemoicapnhat.json' // [27]
+    'http://movie247.online/BiluTV/BiluTV/JsonPhim/TrangChu/phimlemoicapnhat.json', // [27]
+
+    'http://movie247.online/BiluTV/BiluTV/JsonPhim/TheLoai/phimgiadinhhocduong.json', // [28]
+    'http://movie247.online/BiluTV/BiluTV/JsonPhim/TheLoai/phimhinhsuchientranh.json', // [29]
+    'http://movie247.online/BiluTV/BiluTV/JsonPhim/TheLoai/phimlongtieng.json', // [30]
+    'http://movie247.online/BiluTV/BiluTV/JsonPhim/TheLoai/phimtailieukhampha.json', // [31]
+    'http://movie247.online/BiluTV/BiluTV/JsonPhim/TheLoai/phimthuyetminh.json', // [32]
+    'http://movie247.online/BiluTV/BiluTV/JsonPhim/TheLoai/phimtrinhtham.json', // [33]
+    'http://movie247.online/BiluTV/BiluTV/JsonPhim/TheLoai/phimvanhoatamlinh.json' // [34]
 ]
 
+const {width, height} = Dimensions.get('window')
 
 class Splash extends Component {
 
@@ -72,8 +84,10 @@ class Splash extends Component {
         const { activityIndicatorContainer } = styles
         return (
             <View style={activityIndicatorContainer}>
+            <ImageBackground style ={{width: 210 , height: 60}} source = {require('../image/logo.png')}></ImageBackground>
                 <ActivityIndicator
-                    size="large"
+                    style={{paddingTop: 10}}
+                    size={40}
                     color='#585858'
                 />
             </View>
@@ -89,7 +103,10 @@ class Splash extends Component {
     render() {
         const { isFetching } = this.props.data
         return (
-            <View style={{ flex: 1, backgroundColor: 'black' }}>
+            <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center'}}>
+                <StatusBar
+                    backgroundColor="black"
+                />
                 {isFetching ? this.renderActivityIndicator() : this.renderList()}
             </View>
         )

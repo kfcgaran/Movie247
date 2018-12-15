@@ -4,7 +4,8 @@ import {
     Text,
     StyleSheet,
     StatusBar,
-    TouchableOpacity
+    TouchableOpacity,
+    
 } from "react-native";
 
 import VideoPlayer from 'react-native-af-video-player';
@@ -15,7 +16,7 @@ import { EatBeanLoader, TextLoader } from 'react-native-indicator';
 
 import Entypo from 'react-native-vector-icons/Entypo'
 import Icons from 'react-native-vector-icons/MaterialIcons'
-console.ignoredYellowBox = ['Warning:']
+console.disableYellowBox = true;
 class VideoView extends Component {
 
     constructor(props) {
@@ -39,12 +40,12 @@ class VideoView extends Component {
         Orientation.lockToLandscape()
     }
 
+    componentWillUnmount(){
+        Orientation.lockToPortrait()
+    }
+
     shouldComponentUpdate() {
-        if (this.state.data.length > 0 && this.state.data != null) {
-            return false
-        }
-        else
-            return true
+        return true;
     }
 
     getMoviesFromApiAsync(url) {
@@ -103,33 +104,40 @@ class VideoView extends Component {
             "arr1080p": arr1080,
         }
         if(myobj["arr1080p"].length >0){
-            return ( myobj["arr1080p"][0])
+            for(let i = 0 ; i < myobj["arr1080p"].length ; i++){
+                let string = myobj["arr1080p"][i].substr(0,21)
+                if(string == 'http://api.bilutv.net') return myobj["arr1080p"][i]
+            }
+            //return (myobj["arr1080p"][0])
         }
         if(myobj["arr720p"].length >0){
-            return (myobj["arr720p"][0])
+            for(let i = 0 ; i < myobj["arr720p"].length ; i++){
+                let string = myobj["arr720p"][i].substr(0,21)
+                if(string == 'http://api.bilutv.net') return myobj["arr720p"][i]
+            }
+            //return (myobj["arr720p"][0])
         }
         if(myobj["arr480p"].length >0){
-            return (myobj["arr480p"][0])
+            for(let i = 0 ; i < myobj["arr480p"].length ; i++){
+                let string = myobj["arr480p"][i].substr(0,21)
+                if(string == 'http://api.bilutv.net') return myobj["arr480p"][i]
+            }
+            //return (myobj["arr480p"][0])
         }
         if(myobj["arr360p"].length >0){
-            return (myobj["arr360p"][0])
+            for(let i = 0 ; i < myobj["arr360p"].length ; i++){
+                let string = myobj["arr360p"][i].substr(0,21)
+                if(string == 'http://api.bilutv.net') return myobj["arr360p"][i]
+            }
+            //return (myobj["arr360p"][0])
         }
-        else return "https://r6---sn-i3beln76.googlevideo.com/videoplayback?id=11ef3280ed295160&itag=22&source=webdrive&&requiressl=yes&mm=30&mn=sn-i3beln76&ms=nxu&mv=m&pl=48&sc=yes&ei=nv8FXL_-EoH84wLu1YaABw&susc=drp&app=fife&driveid=1Ex03P__awPjVyi9UsBH93W9lJ3wPzB_S&mime=video/mp4&dur=1449.970&lmt=1543664874727757&mt=1543896880&ip=2001:ee0:305:1::14&ipbits=48&expire=1543904190&sparams=ip,ipbits,expire,id,itag,source,requiressl,mm,mn,ms,mv,pl,sc,ei,susc,app,driveid,mime,dur,lmt&signature=4D12A4A016912A41EF8B5A1CC9BB69B327FD9D9D1CED4AC243DC581AB133F5D2.0F923DBF24332FB296C73A397499582142690A66C4E4A193C7A8DBA6432657A4&key=us0"     
+        else return "https://r6---sn-i3beln76.googlevideo.com/"     
     }
 
     render() {
         if (!this.state.data.length && this.state.check == false) {
             return (
                 <View style={{ flex: 1, backgroundColor: 'black', paddingLeft: 10, paddingTop: 10 }}>
-                    {/* <TouchableOpacity
-                        onPress={this._back}
-                    >
-                        <Icons
-                            name='chevron-left'
-                            color='white'
-                            size={50}
-                        />
-                    </TouchableOpacity> */}
                     <View style={styles.loadingContainer}>
                         <EatBeanLoader
                             color='white'
@@ -151,7 +159,9 @@ class VideoView extends Component {
                     onMorePress={this._back}
                     more={styles.backButton}
                     title={params.name + ' - Tập ' +params.item.Tap}
-                    url={{ uri: Quality }}
+                    url={{ uri: Quality}}
+                    onEnd = {this._back}
+                    
                 />
             </View>
         );
