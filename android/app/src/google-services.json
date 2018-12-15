@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "549491505821",
+    "firebase_url": "https://movie247-a4016.firebaseio.com",
+    "project_id": "movie247-a4016",
+    "storage_bucket": "movie247-a4016.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549491505821:android:ac44a16bf31db686",
+        "android_client_info": {
+          "package_name": "com.movie247"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549491505821-ldvb8docqlnq86jo97e588be45cpam2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAogKT9DTjzqIWjAKt5rx-z-wkxVqabFZk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

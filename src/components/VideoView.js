@@ -104,32 +104,32 @@ class VideoView extends Component {
             "arr1080p": arr1080,
         }
         if(myobj["arr1080p"].length >0){
-            for(let i = 0 ; i < myobj["arr1080p"].length ; i++){
-                let string = myobj["arr1080p"][i].substr(0,21)
-                if(string == 'http://api.bilutv.net') return myobj["arr1080p"][i]
-            }
-            //return (myobj["arr1080p"][0])
+            // for(let i = 0 ; i < myobj["arr1080p"].length ; i++){
+            //     let string = myobj["arr1080p"][i].substr(0,21)
+            //     if(string == 'http://api.bilutv.net') return myobj["arr1080p"][i]
+            // }
+            return (myobj["arr1080p"][0])
         }
         if(myobj["arr720p"].length >0){
-            for(let i = 0 ; i < myobj["arr720p"].length ; i++){
-                let string = myobj["arr720p"][i].substr(0,21)
-                if(string == 'http://api.bilutv.net') return myobj["arr720p"][i]
-            }
-            //return (myobj["arr720p"][0])
+            // for(let i = 0 ; i < myobj["arr720p"].length ; i++){
+            //     let string = myobj["arr720p"][i].substr(0,21)
+            //     if(string == 'http://api.bilutv.net') return myobj["arr720p"][i]
+            // }
+            return (myobj["arr720p"][0])
         }
         if(myobj["arr480p"].length >0){
-            for(let i = 0 ; i < myobj["arr480p"].length ; i++){
-                let string = myobj["arr480p"][i].substr(0,21)
-                if(string == 'http://api.bilutv.net') return myobj["arr480p"][i]
-            }
-            //return (myobj["arr480p"][0])
+            // for(let i = 0 ; i < myobj["arr480p"].length ; i++){
+            //     let string = myobj["arr480p"][i].substr(0,21)
+            //     if(string == 'http://api.bilutv.net') return myobj["arr480p"][i]
+            // }
+            return (myobj["arr480p"][0])
         }
         if(myobj["arr360p"].length >0){
-            for(let i = 0 ; i < myobj["arr360p"].length ; i++){
-                let string = myobj["arr360p"][i].substr(0,21)
-                if(string == 'http://api.bilutv.net') return myobj["arr360p"][i]
-            }
-            //return (myobj["arr360p"][0])
+            // for(let i = 0 ; i < myobj["arr360p"].length ; i++){
+            //     let string = myobj["arr360p"][i].substr(0,21)
+            //     if(string == 'http://api.bilutv.net') return myobj["arr360p"][i]
+            // }
+            return (myobj["arr360p"][0])
         }
         else return "https://r6---sn-i3beln76.googlevideo.com/"     
     }

@@ -23,6 +23,7 @@ class App extends Component {
       itemSelected: 'Trang Chủ',
       arr: []
     }
+   
     this.itemSelected = this.itemSelected.bind(this)
   }
 
@@ -45,7 +46,9 @@ class App extends Component {
 
   componentWillMount() {
     Orientation.lockToPortrait()
+    
   }
+
 
   updateMenu(isOpen) {
     this.setState({ isOpen })

@@ -106,7 +106,7 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-          multiDexEnabled true //important
+        multiDexEnabled true //important
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -142,13 +142,14 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-exit-app')
-    compile project(':react-native-linear-gradient')
-    compile project(':react-native-keep-awake')
     compile project(':react-native-video')
-    compile project(':react-native-orientation')
-    compile project(':react-native-gesture-handler')
     compile project(':react-native-vector-icons')
+    compile project(':react-native-orientation')
+    compile project(':react-native-onesignal')
+    compile project(':react-native-gesture-handler')
+    compile project(':react-native-exit-app')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':react-native-keep-awake')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
@@ -160,3 +161,16 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+        // classpath 'com.google.gms:google-services:4.0.1'
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
