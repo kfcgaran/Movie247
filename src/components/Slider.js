@@ -13,7 +13,6 @@ import { connect } from 'react-redux'
 import Common from '../common'
 const { width, height } = Dimensions.get('window');
 
-
 const Slider = props => (<TouchableWithoutFeedback style={styles.container} onPress={() => props.navigate('Details', getObjMovie(props.item))}>
     <Image style={styles.image} source={{uri: props.uri}} />
 </TouchableWithoutFeedback>

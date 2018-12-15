@@ -1,6 +1,7 @@
 import { FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_ERROR } from '../constants/';
 import GetArrayData from '../api/api'
 import {AsyncStorage} from 'react-native'
+
 export const getData = () => {
     return {
         type: FETCHING_DATA

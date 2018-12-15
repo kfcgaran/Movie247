@@ -54,6 +54,7 @@ class Search extends Component {
                 if(responseJson.length > 0){
                     this.setState({
                         arrSearch: responseJson,
+                        check: false
                     })
                 }
                 else{
@@ -126,7 +127,7 @@ class Search extends Component {
                             <Text style={{color: '#b3b3b3', fontSize: 17, paddingTop: 6}}>Insidious 3</Text>
                         </View>
                     :
-                    this.state.arrSearch.length > 0 ?
+                    this.state.arrSearch.length > 0 && this.state.check== false?
                         <FlatList
                         style={{ marginHorizontal: 5 }}
                         data={this.state.arrSearch}
@@ -135,7 +136,7 @@ class Search extends Component {
                         renderItem={({ item }) => this._renderItem(item)}
                     />
                     :
-                    this.state.text && this.state.check == true ?
+                    this.state.check == true ?
                     <Text style={{ color: '#b3b3b3', textAlign: 'center', fontSize: 18}}>Không tìm thấy phim {':(('}</Text>
                     : null
                 }
@@ -179,7 +180,7 @@ const styles = StyleSheet.create({
     input: {
         width: width - (width / 4),
         height: 40,
-        backgroundColor: '#323232',
+        backgroundColor: '#FFFFFF',
         marginHorizontal: 10,
         paddingLeft: 35,
         padding: 5,
@@ -203,7 +204,7 @@ const styles = StyleSheet.create({
         height: 160
     },
     itemContent: {
-        flex: 1,
+        flex: 1/3,
         flexDirection: 'column'
     },
     textItem: {

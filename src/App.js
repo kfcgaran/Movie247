@@ -156,7 +156,6 @@ class App extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'black',

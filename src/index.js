@@ -6,6 +6,7 @@ import RNExitApp from 'react-native-exit-app';
 import Routes from './config/routes'
 
 import getStore from './store'
+import Orientation from 'react-native-orientation'
 
 const Navigator = StackNavigator(Routes, {
     headerMode: 'screen',
@@ -50,6 +51,7 @@ class App extends Component {
             return true;
         }
         dispatch(NavigationActions.back());
+        Orientation.lockToPortrait();
         return true;
     }
 

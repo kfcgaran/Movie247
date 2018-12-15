@@ -17,6 +17,7 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Common from '../common'
 import { AfterInteractions } from 'react-native-interactions';
+import {OptimizedFlatList} from 'react-native-optimized-flatlist'
 
 const ITEMS_PER_PAGE = 28;
 const {width,height} = Dimensions.get('window')
@@ -189,7 +190,7 @@ class GridListMovies extends Component {
                 : null
             }
                 <FlatList
-                    style={{ flex: 1, paddingLeft: 5, paddingRight: 5, paddingTop: 5}}
+                    style={{padding: 5}}
                     data={this.state.page == 1 ? initArr : continueArr}
                     numColumns={3}
                     keyExtractor={item => item.id}
@@ -222,7 +223,7 @@ const styles = StyleSheet.create({
         height: 160
     },
     itemContent: {
-        flex: 1,
+        flex: 1/3,
         flexDirection: 'column'
     },
     textItem: {
