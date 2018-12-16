@@ -23,7 +23,7 @@ class App extends Component {
       itemSelected: 'Trang Chủ',
       arr: []
     }
-   
+
     this.itemSelected = this.itemSelected.bind(this)
   }
 
@@ -46,7 +46,6 @@ class App extends Component {
 
   componentWillMount() {
     Orientation.lockToPortrait()
-    
   }
 
 
@@ -58,7 +57,7 @@ class App extends Component {
     if (this.state.itemSelected == 'Trang Chủ') {
       return (
         <ScrollView style={{ flex: 1 }}>
-          <Slide 
+          <Slide
             navigation={this.props.navigation}
           />
           <ListMoviesHome

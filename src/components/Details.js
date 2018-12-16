@@ -28,13 +28,13 @@ import { NavigationActions } from 'react-navigation'
 
 const { width, height } = Dimensions.get('window');
 console.ignoredYellowBox = ['Warning:']
-
+const ITEMS_PER_PAGE = 50;
 class Details extends Component {
     constructor(props) {
         super(props)
         this.state = {
             itemSelected: false,
-            arrDetails: []
+            arrDetails: [],
         }
     }
     onShare() {
@@ -110,8 +110,9 @@ class Details extends Component {
     _renderNominatedItem(item, id) {
         const { navigate, goBack } = this.props.navigation
         const resetAction = NavigationActions.reset({
-            index: 1,
+            index: 2,
             actions: [
+                NavigationActions.navigate({ routeName: 'Home' }),
                 NavigationActions.navigate({ routeName: 'Home' }),
                 NavigationActions.navigate({ routeName: 'Details', params: { item } }),
             ],
@@ -226,8 +227,9 @@ class Details extends Component {
                                     <FlatList
                                         numColumns={5}
                                         columnWrapperStyle={{ marginTop: 5, maginLeft: 5, marginRight: 5 }}
-                                        data={episodes}
-                                        keyExtractor = {item => item.Tap}                                                                 
+                                        data={episodes}                                       
+                                        initialNumToRender={0}
+                                        keyExtractor={item => item.Tap}
                                         renderItem={({ item }) => this._renderEpisodes(item)}
                                     />
                                 </View>
@@ -238,10 +240,14 @@ class Details extends Component {
                             <Text style={styles.infoTitle}>Đang phát :</Text>
                             <Text style={[{ width: width - (width / 5) }, styles.normalText]}>{nowShowing}</Text>
                         </View>
-                        <View style={styles.infoContainer}>
-                            <Text style={styles.infoTitle}>Sắp chiếu :</Text>
-                            <Text style={[{ width: width - (width / 5) }, styles.normalText]}>{comingSoon}</Text>
-                        </View>
+                        {
+                            comingSoon != null ?
+                            <View style={styles.infoContainer}>
+                                <Text style={styles.infoTitle}>Sắp chiếu :</Text>
+                                <Text style={[{ width: width - (width / 5) }, styles.normalText]}>{comingSoon}</Text>
+                            </View>
+                            : null
+                        }
                         <View style={styles.infoContainer}>
                             <Text style={styles.infoTitle}>Diễn viên :</Text>
                             <Text style={[{ width: width - (width / 5) }, styles.normalText]}>{cast}</Text>
