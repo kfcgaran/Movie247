@@ -6,13 +6,15 @@ import {
     ActivityIndicator,
     StatusBar,
     ImageBackground,
-    Dimensions
+    Dimensions,
+    NetInfo
 } from "react-native";
 
 import { fetchData } from '../action/index'
 import { connect } from 'react-redux'
 import Orientation from 'react-native-orientation'
 import OneSignal from 'react-native-onesignal'; // Import package from node modules
+import RNExitApp from 'react-native-exit-app';
 
 const links = [
     // Menu
@@ -81,6 +83,11 @@ class Splash extends Component {
 
 
     renderActivityIndicator() {
+        NetInfo.getConnectionInfo().then((connectionInfo) => {
+            if(connectionInfo.type == 'none'){
+                Alert.alert('Oops','Bạn vui lòng kiểm tra lại kết nối và mở lại ứng dụng !',  [{ text: 'OK', onPress: () => RNExitApp.exitApp()}])
+            }
+        });
         const { activityIndicatorContainer } = styles
         return (
             <View style={activityIndicatorContainer}>
