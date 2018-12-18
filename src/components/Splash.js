@@ -6,12 +6,15 @@ import {
     ActivityIndicator,
     StatusBar,
     ImageBackground,
-    Dimensions
+    Dimensions,
+    NetInfo
 } from "react-native";
 
 import { fetchData } from '../action/index'
 import { connect } from 'react-redux'
 import Orientation from 'react-native-orientation'
+import OneSignal from 'react-native-onesignal'; // Import package from node modules
+import RNExitApp from 'react-native-exit-app';
 
 const links = [
     // Menu
@@ -56,7 +59,7 @@ const links = [
     'http://movie247.online/BiluTV/BiluTV/JsonPhim/TheLoai/phimvanhoatamlinh.json' // [34]
 ]
 
-const {width, height} = Dimensions.get('window')
+const { width, height } = Dimensions.get('window')
 
 class Splash extends Component {
 
@@ -66,27 +69,31 @@ class Splash extends Component {
             data: [],
             isLoading: true
         }
+
     }
 
     componentWillMount() {
         Orientation.lockToPortrait()
+        this.props.fetchData(links)
     }
 
     static navigationOptions = {
         // header: null,
     }
 
-    componentWillMount() {
-        this.props.fetchData(links)
-    }
 
     renderActivityIndicator() {
+        NetInfo.getConnectionInfo().then((connectionInfo) => {
+            if(connectionInfo.type == 'none'){
+                Alert.alert('Oops','Bạn vui lòng kiểm tra lại kết nối và mở lại ứng dụng !',  [{ text: 'OK', onPress: () => RNExitApp.exitApp()}])
+            }
+        });
         const { activityIndicatorContainer } = styles
         return (
             <View style={activityIndicatorContainer}>
-            <ImageBackground style ={{width: 210 , height: 60}} source = {require('../image/logo.png')}></ImageBackground>
+                <ImageBackground style={{ width: 210, height: 60 }} source={require('../image/logo.png')}></ImageBackground>
                 <ActivityIndicator
-                    style={{paddingTop: 10}}
+                    style={{ paddingTop: 10 }}
                     size={40}
                     color='#585858'
                 />
@@ -103,7 +110,7 @@ class Splash extends Component {
     render() {
         const { isFetching } = this.props.data
         return (
-            <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center' }}>
                 <StatusBar
                     backgroundColor="black"
                 />

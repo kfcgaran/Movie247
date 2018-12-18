@@ -13,7 +13,7 @@ import Orientation from 'react-native-orientation'
 import { fetchVideoData } from '../action/index'
 import { connect } from 'react-redux'
 import { EatBeanLoader, TextLoader } from 'react-native-indicator';
-
+import Common from '../common'
 import Entypo from 'react-native-vector-icons/Entypo'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 console.disableYellowBox = true;
@@ -75,65 +75,6 @@ class VideoView extends Component {
         goBack()
     }
 
-    setUpQuality(arr){
-        let arr360 = [];
-        let arr480 = [];
-        let arr720 = [];
-        let arr1080 = [];
-        let All = [];
-        let url = '';
-        for(let i= 0; i < arr.length; i++)
-        {
-            if(arr[i].label == "360p"){
-                arr360.push(arr[i].file)
-            }
-            if(arr[i].label == "480p"){
-                arr480.push(arr[i].file)
-            }
-            if(arr[i].label == "720p"){
-                arr720.push(arr[i].file)
-            }
-            if(arr[i].label == "1080p"){
-                arr1080.push(arr[i].file)
-            }
-        }
-        let myobj = {
-            "arr360p": arr360,
-            "arr480p": arr480,
-            "arr720p": arr720,
-            "arr1080p": arr1080,
-        }
-        if(myobj["arr1080p"].length >0){
-            for(let i = 0 ; i < myobj["arr1080p"].length ; i++){
-                let string = myobj["arr1080p"][i].substr(0,21)
-                if(string == 'http://api.bilutv.net') return myobj["arr1080p"][i]
-            }
-            //return (myobj["arr1080p"][0])
-        }
-        if(myobj["arr720p"].length >0){
-            for(let i = 0 ; i < myobj["arr720p"].length ; i++){
-                let string = myobj["arr720p"][i].substr(0,21)
-                if(string == 'http://api.bilutv.net') return myobj["arr720p"][i]
-            }
-            //return (myobj["arr720p"][0])
-        }
-        if(myobj["arr480p"].length >0){
-            for(let i = 0 ; i < myobj["arr480p"].length ; i++){
-                let string = myobj["arr480p"][i].substr(0,21)
-                if(string == 'http://api.bilutv.net') return myobj["arr480p"][i]
-            }
-            //return (myobj["arr480p"][0])
-        }
-        if(myobj["arr360p"].length >0){
-            for(let i = 0 ; i < myobj["arr360p"].length ; i++){
-                let string = myobj["arr360p"][i].substr(0,21)
-                if(string == 'http://api.bilutv.net') return myobj["arr360p"][i]
-            }
-            //return (myobj["arr360p"][0])
-        }
-        else return "https://r6---sn-i3beln76.googlevideo.com/"     
-    }
-
     render() {
         if (!this.state.data.length && this.state.check == false) {
             return (
@@ -149,7 +90,7 @@ class VideoView extends Component {
             )
         }
         const { params } = this.props.navigation.state
-        const Quality = this.setUpQuality(this.state.data)
+        const Quality = Common.setUpQuality(this.state.data)
         return (
             <View style={styles.container}>
                 <StatusBar hidden />

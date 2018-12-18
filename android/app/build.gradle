@@ -101,12 +101,12 @@ android {
         applicationId "com.movie247"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.2.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-          multiDexEnabled true //important
+        multiDexEnabled true //important
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -120,10 +120,22 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+    
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -142,13 +154,14 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-exit-app')
-    compile project(':react-native-linear-gradient')
-    compile project(':react-native-keep-awake')
-    compile project(':react-native-video')
-    compile project(':react-native-orientation')
-    compile project(':react-native-gesture-handler')
-    compile project(':react-native-vector-icons')
+    implementation project(':react-native-video')
+    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-orientation')
+    implementation project(':react-native-onesignal')
+    implementation project(':react-native-gesture-handler')
+    implementation project(':react-native-exit-app')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':react-native-keep-awake')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
@@ -160,3 +173,16 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+        // classpath 'com.google.gms:google-services:4.0.1'
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
