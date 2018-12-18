@@ -162,6 +162,12 @@ class Details extends Component {
         const params = Common.getDetailMovies(this.state.arrDetails)
         const { episodes, nominatedMovie } = params[0]
         const numofEpisodes = episodes.length
+        let arrEpisodes = [];
+        for(let i = 0; i < episodes.length ; i++){
+            if(episodes[i].Tap.indexOf('Trailer') == -1 && episodes[i].Tap.indexOf('trailer') == -1){
+                arrEpisodes.push(episodes[i])
+            }
+        }
         const item = episodes[0]
         const itemNominatedMovie = nominatedMovie[0]
         const { id, image, url, name, realName, nowShowing, comingSoon, director, cast, kind, country, time, view, reviews, numOfYears, content, imageContent } = params[0]
@@ -227,7 +233,7 @@ class Details extends Component {
                                     <FlatList
                                         numColumns={5}
                                         columnWrapperStyle={{ marginTop: 5, maginLeft: 5, marginRight: 5 }}
-                                        data={episodes}                                       
+                                        data={arrEpisodes}                                       
                                         initialNumToRender={0}
                                         keyExtractor={item => item.Tap}
                                         renderItem={({ item }) => this._renderEpisodes(item)}

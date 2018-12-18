@@ -67,5 +67,71 @@ export default class Common extends Component {
     }
 
 
+    static setUpQuality(arr){
+        let arr360 = [];
+        let arr480 = [];
+        let arr720 = [];
+        let arr1080 = [];
+        let All = [];
+        let url = '';
+        for(let i= 0; i < arr.length; i++)
+        {
+            if(arr[i].label == "360p"){
+                arr360.push(arr[i].file)
+            }
+            if(arr[i].label == "480p"){
+                arr480.push(arr[i].file)
+            }
+            if(arr[i].label == "720p"){
+                arr720.push(arr[i].file)
+            }
+            if(arr[i].label == "1080p"){
+                arr1080.push(arr[i].file)
+            }
+        }
+        let myobj = {
+            "arr360p": arr360,
+            "arr480p": arr480,
+            "arr720p": arr720,
+            "arr1080p": arr1080,
+        }
+        if(myobj["arr1080p"].length >0){
+            for(let i = 0 ; i < myobj["arr1080p"].length ; i++){
+                let string = myobj["arr1080p"][i].substr(0,21)
+                if(string == 'http://api.bilutv.net') return myobj["arr1080p"][i]
+            }
+        }
+        if(myobj["arr720p"].length >0){
+            for(let i = 0 ; i < myobj["arr720p"].length ; i++){
+                let string = myobj["arr720p"][i].substr(0,21)
+                if(string == 'http://api.bilutv.net') return myobj["arr720p"][i]
+            }
+        }
+        if(myobj["arr480p"].length >0){
+            for(let i = 0 ; i < myobj["arr480p"].length ; i++){
+                let string = myobj["arr480p"][i].substr(0,21)
+                if(string == 'http://api.bilutv.net') return myobj["arr480p"][i]
+            }
+        }
+        if(myobj["arr360p"].length > 0){
+            for(let i = 0 ; i < myobj["arr360p"].length ; i++){
+                let string = myobj["arr360p"][i].substr(0,21)
+                if(string == 'http://api.bilutv.net') return myobj["arr360p"][i]
+            }
+        }
+        if(myobj["arr1080p"].length >0){
+            return (myobj["arr1080p"][0])
+        }
+        if(myobj["arr720p"].length >0){
+            return (myobj["arr720p"][0])
+        }
+        if(myobj["arr480p"].length >0){
+            return (myobj["arr480p"][0])
+        }
+        if(myobj["arr360p"].length > 0){
+            return (myobj["arr360p"][0])
+        }
+        else return "https://r6---sn-i3beln76.googlevideo.com/"     
+    }
 }
 
